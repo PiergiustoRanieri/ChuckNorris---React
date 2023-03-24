@@ -6,9 +6,30 @@ import Buttons from './components/Button'
 import JokeRender from './components/JokeRender'
 
 function App() {
+    const [dropdown, setDropdown] = useState([])
+    const [joke, setJoke] = useState("")
+    const [userselection, setUserselection] = useState("")
   
-
+    function RenderDropdown(){
+        let url = 'https://api.chucknorris.io/jokes/categories'
+        let promise = fetch(url)
   
+        promise.then(
+        response => response.json()
+      ).then(
+          data => {
+            data.forEach(element => {
+              let obj = data.map(function(item, index){
+                return {
+                  id: index,
+                  value: item
+                }
+              })
+              setCategories(obj)
+            });
+          }
+      )
+    }
 }
 
 export default App
