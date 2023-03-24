@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import Chuck from './src/assets/chuck-icon.svg'
+import Chuck from './assets/chuck-icon.svg'
 import Dropdown from './components/Dropdown'
 import Buttons from './components/Button'
 import JokeRender from './components/JokeRender'
@@ -14,6 +14,7 @@ function App() {
       setUserSelection(e)
     }
 
+    /* Funzione per renderizzare l'elenco delle categorie del joke */
     function RenderDropdown(){
         let url = 'https://api.chucknorris.io/jokes/categories'
         let promise = fetch(url)
@@ -35,6 +36,7 @@ function App() {
       )
     }
 
+    /*Funzione per displayare il joke a schermo*/
     function JokeDisplay(){
       if(userSelection != ""){
         let url = `https://api.chucknorris.io/jokes/random?category=${userSelection}`
@@ -58,6 +60,7 @@ function App() {
       }
     }
 
+    /* Funzione per far copiare il testo all'utente */
     function copy(){
       if(joke != ""){
         navigator.clipboard.writeText(joke)
@@ -65,7 +68,22 @@ function App() {
       }
     }
 
-    
+    /* Corpo della pagina */
+    return (
+      <div className="App">
+        <div id='container'>
+        <h1 id='title'>Webapp API Chuck Norris</h1>
+        <p id='desc'>Design di una pagina che utilizza la API di <a href="https://api.chucknorris.io/">chucknorris.io</a> per generare alla pressione di un pulsante una battuta del tipo che selezioni nel menu a tendina qui sotto.</p>
+        <img id='chuck-image' src={Chuck} alt="Chuck Norris" />
+        <Dropdown categories={categories} clbk={RenderDropdown} handler={userSelectionHandler} />
+        {joke != "" &&
+          <JokeRender joke={joke}/>
+          } 
+        <Buttons text="Carica Foto" variant={"active"}  styles={"margin-top-20"} clbk={() => JokeDisplay()}/>
+        <Buttons text="Copia Testo" variant={joke === "" ? "disabled" : "active"} styles={"margin-top-20"} clbk={copy}/>
+        </div>
+      </div>
+    )
 }
 
 export default App
