@@ -3,8 +3,8 @@
     border: none;
     width: 100%;
     margin-top: 120px;
-    background-color: var(--brown);
-    font-size: var(--font_20);
+    background-color: #937B63;
+    font-size: 20px;
     text-align: center;
     outline: none;
 }
