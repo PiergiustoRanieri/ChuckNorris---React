@@ -25,7 +25,7 @@ function App() {
                   value: item
                 }
               })
-              setCategories(obj)
+              setDropdown(obj)
             });
           }
       )
