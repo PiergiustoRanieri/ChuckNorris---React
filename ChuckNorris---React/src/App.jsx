@@ -75,7 +75,7 @@ function App() {
         <h1 id='title'>Webapp API Chuck Norris</h1>
         <p id='desc'>Design di una pagina che utilizza la API di <a href="https://api.chucknorris.io/">chucknorris.io</a> per generare alla pressione di un pulsante una battuta del tipo che selezioni nel menu a tendina qui sotto.</p>
         <img id='chuck-image' src={Chuck} alt="Chuck Norris" />
-        <Dropdown categories={categories} clbk={RenderDropdown} handler={userSelectionHandler} />
+        <Dropdown selection={dropdown} clbk={RenderDropdown} handler={userSelectionHandler} />
         {joke != "" &&
           <JokeRender joke={joke}/>
           } 
